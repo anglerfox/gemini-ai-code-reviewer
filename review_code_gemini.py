@@ -133,11 +133,11 @@ def analyze_code(parsed_diff: List[Dict[str, Any]], pr_details: PRDetails) -> Li
 
 def create_prompt(file: PatchedFile, hunk: Hunk, pr_details: PRDetails) -> str:
     """Creates the prompt for the Gemini model."""
-    return f"""Your task is reviewing pull requests. Instructions:
+    return f"""Your task is reviewing pull requests for issues, potential bugs, performance improvements, best coding patterns and standards. Instructions:
+    - Given repository is a Shopify App, build on laravel and VueJS.  
     - Provide the response in following JSON format:  {{"reviews": [{{"lineNumber":  <line_number>, "reviewComment": "<review comment>"}}]}}
     - Provide comments and suggestions ONLY if there is something to improve, otherwise "reviews" should be an empty array.
     - Use GitHub Markdown in comments
-    - Focus on bugs, security issues, and performance problems
     - IMPORTANT: NEVER suggest adding comments to the code
 
 Review the following code diff in the file "{file.path}" and take the pull request title and description into account when writing the response.
