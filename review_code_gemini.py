@@ -136,6 +136,7 @@ def create_prompt(file: PatchedFile, hunk: Hunk, pr_details: PRDetails) -> str:
     return f"""Your task is reviewing pull requests for issues, potential bugs, performance improvements, best coding patterns and standards. Instructions:
     - Given repository is a Shopify App, build on laravel and VueJS.  
     - Provide the response in following JSON format:  {{"reviews": [{{"lineNumber":  <line_number>, "reviewComment": "<review comment>"}}]}}
+    - if the same issue is found at multiple places or files, mention the file & line no, in review comments of 1 review itself, do not add multiple reviews for same issue.
     - Provide comments and suggestions ONLY if there is something to improve, otherwise "reviews" should be an empty array.
     - Use GitHub Markdown in comments
     - IMPORTANT: NEVER suggest adding comments to the code
